@@ -1,0 +1,13 @@
+
+<h1>Lets do this template thing!!</h1>
+{% if latest_username_list %}
+    <ul>
+    {% for username in latest_username_list %}
+        <li><a href="/login/{{username.id}}/">{{ username.username_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No usernames are available </p>
+{% endif %}
+
+
