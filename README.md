@@ -9,6 +9,9 @@ Lunch connect is an web-app to connect interns and new hires to senior managers 
 
 We bring you Lunch Connect to help you use every single minute of your lunch networking, gaining visibility & exploring the work diversity at Cisco.
 
+## Proposed High-level Design
+![Alt text](https://github.com/tapa8728/Cisco-Lunch-Connect/blob/master/Screenshots/design-overview.png "Overview")
+
 ## Technology Stack
 ### Back-end
 1. Django - Web Dev Framework
