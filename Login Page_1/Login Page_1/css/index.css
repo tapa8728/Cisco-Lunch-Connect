@@ -1,0 +1,179 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font: 400 1.375em/1.38 Helvetica;
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  float: left;
+}
+
+.container .container {
+  position: relative;
+  clear: both;
+  z-index: 3;
+  width: 119.6698762035%;
+  height: 302px;
+  margin: -427px 0 0 -18.50714%;
+}
+
+.element {
+  position: relative;
+  float: left;
+  z-index: 0;
+  width: 165.0618982118%;
+  height: 707px;
+  margin: -184px 0 0 -44.70426%;
+  background: url('../images/HAI60950.jpg') rgb(222, 222, 222);
+  background-size: cover;
+  background-position: left top;
+  opacity: 0.9;
+}
+
+.text {
+  float: left;
+  line-height: 1.38;
+}
+
+._button {
+  display: block;
+  position: relative;
+  float: left;
+  height: 53px;
+  margin-top: -192px;
+  border-radius: 3px;
+  background-color: rgb(222, 222, 222);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.38;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+._input {
+  display: block;
+  position: relative;
+  float: left;
+  width: 36.6145116918%;
+  height: 52px;
+  margin-left: 34.6629999999%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  box-shadow: -2px 1px 5px 5px rgba(0, 0, 0, .5);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.38;
+  color: rgb(0, 0, 0);
+}
+
+.container-1 {
+  width: 60.5833333333%;
+  height: 529px;
+  margin: 195px 0 0 26.32422%;
+}
+
+.text-1 {
+  position: relative;
+  clear: both;
+  z-index: 1;
+  width: 110.8665749656%;
+  min-height: 190px;
+  margin: -563px 0 0 -38.11253%;
+  font-size: 0.727em;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+}
+
+.text-2 {
+  width: 98.2040229885%;
+  min-height: 122px;
+  margin: -96px 0 0 -16.3218400001%;
+  font-size: 1em;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+}
+
+.text-3 {
+  position: relative;
+  z-index: 5;
+  width: 32.4621733149%;
+  min-height: 52px;
+  margin: -399px 0 0 2.9681099999%;
+  font-family: 'Noto Sans';
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(253, 245, 245);
+}
+
+.text-4 {
+  position: relative;
+  z-index: 6;
+  width: 22.4488480055%;
+  min-height: 51px;
+  margin: -319px 0 0 2.9681099999%;
+  font-family: 'Noto Sans';
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(247, 242, 242);
+}
+
+.container ._button-1 {
+  z-index: 7;
+  width: 32.7372764786%;
+  margin-left: 12.37105%;
+}
+
+.container ._button-2 {
+  z-index: 8;
+  width: 32.7372764786%;
+  margin-left: 52.40715%;
+}
+
+.container ._input-1 {
+  z-index: 4;
+  margin-top: -408px;
+}
+
+.container ._input-2 {
+  z-index: 9;
+  margin-top: -319px;
+}
+
+.text span {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: transparent;
+  border-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  font-style: inherit;
+  text-transform: inherit;
+  text-decoration: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  opacity: 1;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.text-1 span {
+  font-family: Oxygen;
+  font-size: 2.188em;
+  font-weight: 300;
+  color: rgb(8, 95, 150);
+}
+
+.text-2 span,
+.text-3 span,
+.text-4 span {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}

@@ -1,0 +1,240 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font: 400 1.25em/1.38 Lora;
+  color: rgb(0, 0, 0);
+}
+
+.element {
+  position: relative;
+  float: left;
+  background-color: rgb(222, 222, 222);
+}
+
+.text {
+  float: left;
+  font-weight: 400;
+  line-height: 1.38;
+  color: rgb(0, 0, 0);
+}
+
+.text-2 p {
+  margin-bottom: 1em;
+}
+
+.element-1 {
+  z-index: 0;
+  width: 38.25%;
+  height: 264px;
+  margin: 6px 0 0 10%;
+  background-image: url('../images/HAK44083.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left top;
+}
+
+.element-2 {
+  z-index: 2;
+  width: 25.6%;
+  height: 254px;
+  margin: 69px 0 0 2.39974%;
+  background-image: url('../images/Picture2.jpg');
+  background-size: contain;
+  background-position: left top;
+}
+
+.element-3 {
+  clear: both;
+  z-index: 6;
+  width: 18%;
+  height: 232px;
+  margin: 18px 0 0 14.25%;
+  border-radius: 3px 3px 3px 5px;
+  background-image: url('../images/nikikuma.jpg'), url('../images/taparikh.jpg');
+  background-repeat: repeat, repeat;
+  background-size: cover, cover;
+  background-position: left top, left top;
+  background-attachment: scroll, scroll;
+}
+
+.element-4 {
+  z-index: 7;
+  width: 18%;
+  height: 232px;
+  margin: 18px 0 0 7.34896%;
+  border-radius: 3px 3px 3px 5px;
+  background-image: url('../images/taparikh.jpg');
+  background-size: cover;
+  background-position: left top;
+}
+
+.element-5 {
+  z-index: 8;
+  width: 18%;
+  height: 232px;
+  margin: 18px 0 0 6.79948%;
+  border-radius: 3px 3px 3px 5px;
+  background-image: url('../images/edshea.jpg'), url('../images/taparikh.jpg');
+  background-repeat: repeat, repeat;
+  background-size: cover, cover;
+  background-position: left top, left top;
+  background-attachment: scroll, scroll;
+}
+
+.text-1 {
+  position: relative;
+  z-index: 3;
+  width: 16.5%;
+  min-height: 93px;
+  margin: 203px 0 0 25.2487%;
+  font-family: Helvetica;
+  font-size: 0.8em;
+}
+
+.text-2 {
+  position: relative;
+  clear: both;
+  z-index: 1;
+  width: 52.0833333333%;
+  min-height: 108px;
+  margin: 87px 0 0 9.91667%;
+  font-size: 1em;
+}
+
+.text-3 {
+  clear: both;
+  width: 78.5%;
+  min-height: 116px;
+  margin: 92px 0 0 10.66667%;
+  font-family: Helvetica;
+  font-size: 0.8em;
+}
+
+.text-4 {
+  clear: both;
+  width: 9%;
+  min-height: 93px;
+  margin: 56px 0 0 80.9987%;
+  font-family: Quattrocento;
+  font-size: 0.8em;
+}
+
+.text-5 {
+  position: relative;
+  clear: both;
+  z-index: 9;
+  width: 18%;
+  min-height: 37px;
+  margin: 41px 0 0 14.25%;
+  font-family: Helvetica;
+  font-size: 0.8em;
+}
+
+.text-6 {
+  position: relative;
+  z-index: 10;
+  width: 18.5677083333%;
+  min-height: 33px;
+  margin: 41px 0 0 7.34896%;
+  font-family: Helvetica;
+  font-size: 0.8em;
+}
+
+.text-7 {
+  position: relative;
+  z-index: 11;
+  width: 18.5677083333%;
+  min-height: 33px;
+  margin: 41px 0 0 6.23047%;
+  font-family: Helvetica;
+  font-size: 0.8em;
+}
+
+.text a {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: transparent;
+  border-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  text-decoration: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: #000000;
+  opacity: 1;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.text span {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: transparent;
+  border-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  text-transform: inherit;
+  text-decoration: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  opacity: 1;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.text-1 span {
+  font-family: Quattrocento;
+  font-style: normal;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: inherit;
+}
+
+.text-2 span {
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: #000000;
+}
+
+.text-3 span {
+  font-style: normal;
+  font-size: 1.563em;
+  font-weight: inherit;
+  color: #0f28e5;
+}
+
+.text-4 span {
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 2.5em;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.text-5 span,
+.text-6 span,
+.text-7 span {
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 1.375em;
+  font-weight: inherit;
+  color: inherit;
+}
