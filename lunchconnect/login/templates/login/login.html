@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'login/signin.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+    <!-- What you want to send-->
+     <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Cisco Lunch Connect</h2>
+        <label for="inputEmail" class="sr-only">Cisco Username</label>
+        <input type="text" name="inputUsername" class="form-control" placeholder="Cisco Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Sign in</button>
+        <p> Sign up if you don't have an account yet </p>
+
+        
+        <!--<button class="btn btn-lg btn-default btn-block" type="button" href="signup.html">Sign up</button> -->
+        <br><br>
+        <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
+      </form>
+
+      <form class="form-signin" action="{% url 'login:signup' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" />
+      </form> 
+
+    </div> <!-- /container -->
+
+
+
+  </body>
+</html>

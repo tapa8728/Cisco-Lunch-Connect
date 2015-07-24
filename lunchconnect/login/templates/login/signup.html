@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signup</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'login/signup.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+
+    <div class="container">
+  
+      <form class="form1" action="{% url 'login:save' %}" method="post">
+	       {% csrf_token %}
+        <h2 class="form-signin-heading">Cisco Lunch Connect</h2>
+    <label for="inputUsername" class="sr-only">Cisco Username</label>
+        <input type="text" name ="inputUsername" class="form-control" placeholder="Cisco Username" required autofocus>    
+    <label for="inputFirstName" class="sr-only">First Name</label>
+        <input type="text" name="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+		 <label for="inputLastName" class="sr-only">Last Name</label>
+        <input type="text" name="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+     <label for="inputDesignation" class="sr-only">Designation</label>
+	 
+        <select name="inputDesignation" class="form-control" placeholder="Designation" required autofocus>
+		 <option value="" disabled selected>Select your option</option>
+		<option value="intern"> Intern </option>
+		<option value="manager"> Manager </option>
+		</select>
+     <label for="inputBU" class="sr-only">Business Unit</label>
+        <input type="text" name="inputBU" class="form-control" placeholder="Business Unit"  autofocus>
+	
+     
+	 <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign Up</button>
+
+		
+      </form>
+
+    </div> <!-- /container -->
+
+
+  </body>
+</html>

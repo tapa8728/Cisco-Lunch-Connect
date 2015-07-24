@@ -1,13 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Username, Password
+from .models import User
 
-
-admin.site.register(Password)
-
-class UsernameAdmin(admin.ModelAdmin):
-    list_display = ('username_text', 'pub_date', 'was_published_recently')
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'password', 'firstname', 'lastname', 'designation', 'businessunit')
 
               
-admin.site.register(Username, UsernameAdmin)
+admin.site.register(User, UserAdmin) #regster the table and the function

@@ -1,0 +1,7 @@
+<h1> Detail </h1>
+<h1>{{ username.username_text }}</h1>
+<ul>
+{% for password in username.password_set.all %}
+	<li>{{ password.password_text }}</li>
+{% endfor %}
+</ul>

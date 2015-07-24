@@ -1,27 +1,57 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 
-from .models import Username, Password
+from .models import User
 
 # Create your views here.
 def index(request):
     latest_username_list = Username.objects.order_by('-pub_date')[:5]
     template = loader.get_template('login/index.html')
-    context = RequestContext(request, {
-    	'latest_username_list': latest_username_list,
-    	})
-    #output = ', '.join([p.username_text for p in latest_username_list])
-    #return HttpResponse(output)
-    return HttpResponse(template.render(context))
+    context = {'latest_username_list': latest_username_list }
+    return render(request, 'login/index.html', context)
 
-def detail(request, username_id):
-    return HttpResponse("Your are looking at the username with id %s." % username_id)
 
-def match(request, username_id):
-    response = "you are looking at the match for %s."
-    return HttpResponse(response % username_id)
+# Render the sign up page
+def signup(request):
+    return render(request, 'login/signup.html')
 
-def signup(request, username_id):
-    response = "Lets learn how connect pages with template %s."
-    return HttpResponse(response % username_id)
+# To save to DB
+def save(request):
+    print "now we will try to save"
+    in_username = request.POST['inputUsername']
+    in_firstname = request.POST['inputFirstName']
+    in_lastname = request.POST['inputLastName']
+    in_password = request.POST['inputPassword']
+    in_designation = request.POST['inputDesignation']
+    in_businessunit = request.POST['inputBU']
+    new_obj = User(username=in_username, firstname=in_firstname, password=in_password, lastname=in_lastname, designation=in_designation, businessunit=in_businessunit)
+    new_obj.save()  #to save to DB
+    return render(request, 'login/profile.html', {'user': new_obj})
+
+# Render Login page
+def login(request):
+	return render(request, 'login/login.html')
+
+# on click of submit button the u/p combo should go to database and check if it exists or not ????
+# you will get the username from login.html
+def submitform(request):
+    if request.method == 'POST':
+        input_username = request.POST['inputUsername']
+        input_password = request.POST['inputPassword']
+        #print input_username, "input_username"
+        #print input_password, "input_password"
+        all_objects = User.objects.all()
+        count = User.objects.count()
+        print "count is" , count
+        for obj in all_objects:
+            print input_username
+            print obj.username
+            if input_username == obj.username:
+                if input_password == obj.password:
+                    print "Match Found!!! YAY"
+                    return render(request, 'login/profile.html', {'user': obj})
+                    break           
+            else:
+                print "Match Not Found "
+        return render(request, 'login/login_incorrect.html')
