@@ -26,24 +26,16 @@
     <div class="container">
     <!-- What you want to send-->
      <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">Cisco Lunch Connect</h2>
-		<h4 style="color: #FF0000;"> Incorrect Username or Password. Try Again. </h4>
-        <label for="inputEmail" class="sr-only">Cisco Username</label>
-        <input type="text" name="inputUsername" class="form-control" placeholder="Cisco Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
-      
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Sign in</button>
-       
-        <br><br>
+        <h2 class="form-signin-heading">Welcome {{user.firstname}} {{user.lastname}} </h2>
+        
+        <h3>Designation : {{user.designation}} </h3>
+
+        <h3>Business Unit : {{user.businessunit}} </h3>
+        
         <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
+        <a href="#"> Putup your available slots here </a>
       </form>
-         <p> Sign up if you don't have an account yet </p>
-        <form class="form-signin" action="{% url 'login:signup' %}" method="post">
-          {% csrf_token %}
-          <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" />
-      </form> 
+
     </div> <!-- /container -->
 
 

@@ -25,6 +25,15 @@ def save(request):
     in_password = request.POST['inputPassword']
     in_designation = request.POST['inputDesignation']
     in_businessunit = request.POST['inputBU']
+    #check for uniqueness before adding
+    all_objects = User.objects.all()
+    for obj in all_objects:
+        if in_username == obj.username:
+            print "Username already exists", in_username
+            return render(request, 'login/login_alreadyexists.html')
+            break           
+        
+    #Query to save to DB
     new_obj = User(username=in_username, firstname=in_firstname, password=in_password, lastname=in_lastname, designation=in_designation, businessunit=in_businessunit)
     new_obj.save()  #to save to DB
     return render(request, 'login/profile.html', {'user': new_obj})
@@ -45,13 +54,17 @@ def submitform(request):
         count = User.objects.count()
         print "count is" , count
         for obj in all_objects:
-            print input_username
-            print obj.username
+            print input_username, obj.username
+            print input_password, obj.password
             if input_username == obj.username:
                 if input_password == obj.password:
-                    print "Match Found!!! YAY"
-                    return render(request, 'login/profile.html', {'user': obj})
+                    print "----Match Found!!! YAY"
+                    print "Designation is", obj.designation
+                    if obj.designation == 'intern':
+                        return render(request, 'login/profile_interns.html', {'user': obj})
+                    else:
+                        return render(request, 'login/profile_ciscoemployees.html', {'user': obj})
                     break           
             else:
-                print "Match Not Found "
+                print "---Match Not Found"
         return render(request, 'login/login_incorrect.html')
