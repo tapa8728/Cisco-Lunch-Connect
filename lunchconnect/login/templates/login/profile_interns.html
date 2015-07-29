@@ -33,11 +33,48 @@
         <h3>Business Unit : {{user.businessunit}} </h3>
         
         <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
-        <a href="#"> Look up available slots and book yours here </a>
-      </form>
-
+        <a href="{% url 'login:login' %}" class="btn btn-info" role="button">Logout!</a>
+        </form>
     </div> <!-- /container -->
 
+    <!-- Available Manager free slots-->
+    <div class="container">
+      <h2> Mananger's Available Slots are: </h2>
+      <h3> manager_username | booked |start | end | Additional Notes </h3>
+      {% for av in app_man_available %}
+      <p> ---------------------------------------------------------------------------------------------------------------------</p>
+        <h3> {{ av.manager_username }} | {{ av.starttime }} | {{ av.endtime }} | {{ av.date }} | {{ av.additionalinfo }} | <a href="{% url 'login:bookslot' av.id %}" class="btn btn-info" data-toggle="modal" data-target="#bookslotmodal" role="button">Book!</a></h3>
+      {% endfor %}
+    </div>
+
+    <!-- Own booked slots-->
+    <div class="container">
+      <h2> Your booked Appointments are: </h2>
+      <h3> manager_username | intern_username | location | start | end | date | additionalinfo | booked </h3>
+      {% for bk in app_own_intern %}
+      <p> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+        <h3> {{ bk.manager_username }} | {{ bk.intern_username}} | {{ bk.location }} | {{ bk.starttime }} | {{ bk.endtime }} | {{ bk.date }} | {{ bk.additionalinfo }} | {{ bk.booked }} | </h3>
+      {% endfor %}
+    </div>
+
+    <!-- Confirmation modal Popup-->
+    <div class="modal fade" id="bookslotmodal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Appointment Confirmation</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Great!</button>
+            <button type="button" class="btn btn-primary">Send Email</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 
   </body>

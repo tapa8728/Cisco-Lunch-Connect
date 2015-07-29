@@ -11,34 +11,65 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Login</title>
+    <title>Profile</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
 
     <!-- Custom styles for this template -->
     <link href="{% static 'login/signin.css' %}" rel="stylesheet">
-
+    <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
   </head>
 
   <body>
 
     <div class="container">
-    <!-- What you want to send-->
-     <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
-        <h2 class="form-signin-heading">Welcome {{user.firstname}} {{user.lastname}} </h2>
+    <!--Display all the profile information -->
+        <h2 name="tanvi" id="reema"> {{ user.username}} </h2>
+        <h2 class="form-signin-heading">Welcome {{user.firstname}} {{user.lastname}} <button class="btn btn-lg btn-default btn-block" type="button" href="#">About US</button> </h2>
         
         <h3>Designation : {{user.designation}} </h3>
 
         <h3>Business Unit : {{user.businessunit}} </h3>
+
+
+    </div>
+    <!-- Create a new appointment slot-->
+      <div class="container">
+        <h2> How should we book an appointment -- modal??? </h2>
+        <form action="{% url 'login:addslot' %}" method="post">
+            {% csrf_token %}
+            <input type="date" name="inputDate">
+            <input type="time" name="inputStartTime">
+            <input type="time" name="inputEndTime">
+            <label for="inputLocation" class="sr-only">Location</label>
+            <input type="text" name ="inputLocation" class="form-control" placeholder="Location" required autofocus>    
+            <input type="textarea" name="inputAdditionalNotes" class="form-control" placeholder="Additional Information for the InternS" />    
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="addslot">Add Slot</button>
+             <!--<button class="btn btn-lg btn-primary btn-block" type="submit" value="addslot">Add your appointment slots</button> -->
         
-        <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
-        <a href="#"> Putup your available slots here </a>
-      </form>
-
+        </form>
     </div> <!-- /container -->
+    
+    <!-- Available free slots-->
+    <div class="container">
+      <h2> Your Available Slots are: </h2>
+      <h3> manager_username | booked  </h3>
+      {% for av in app_available %}
+      <p> --------------------------------------------</p>
+        <h3> {{ av.manager_username }} | {{ av.booked }} </h3>
+      {% endfor %}
+    </div>
 
-
+    <!-- Booked slots-->
+    <div class="container">
+      <h2> Your booked Slots are: </h2>
+      <h3> manager_username | intern_username | location | additionalinfo | booked </h3>
+      {% for bk in app_booked %}
+      <p> --------------------------------------------</p>
+        <h3> {{ bk.manager_username }} | {{ bk.intern_username}} | {{ bk.location }} | {{ bk.additionalinfo }} | {{ bk.booked }} </h3>
+      {% endfor %}
+    </div>
 
   </body>
 </html>

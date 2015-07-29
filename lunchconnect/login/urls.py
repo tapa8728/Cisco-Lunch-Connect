@@ -22,6 +22,12 @@ urlpatterns = [
     # -------- Push Sign Up Data-------
     url(r'^save/$', views.save, name="save"),
 
+    #--------- Add new slot - Managers ------
+    url(r'^addslot/$', views.addslot, name="addslot"),
+
+    #--------- Book Available Slot - Interns -------
+    url(r'^(?P<appointment_id>[0-9]+)/$', views.bookslot, name="bookslot")
+
 
     
 ]

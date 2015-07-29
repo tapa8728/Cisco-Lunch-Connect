@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Add Slot</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+  <div class="container">
+    <!-- What you want to send-->
+     <form class="form-signin" action="{% url 'login:addslot' %}" method="post">
+        {% csrf_token %}
+        <h1> Hello {{user.firstname}} {{user.lastname}}. Choose appointment slot <h1>
+        <input type="date" name="inputDate">
+        <input type="time" name="inputStartTime">
+        <input type="time" name="inputEndTime">
+        <label for="inputLocation" class="sr-only">Location</label>
+        <input type="text" name ="inputULocation" class="form-control" placeholder="Location" required autofocus>    
+        <input type="textarea" name="inputAdditionalNotes" class="form-control" placeholder="Additional Information for the InternS" />    
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Add Slot</button>
+      </form>
+
+      <form class="form-signin">
+          {% csrf_token %}
+          <h1> Lets go back to profile </h1>
+          <h3> We need to figure how to send a get request </h3>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Back to Profile</button>
+      </form> 
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
