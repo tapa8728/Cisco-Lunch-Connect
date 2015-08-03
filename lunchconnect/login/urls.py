@@ -4,12 +4,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    # /login/
-    #url(r'^$', views.index, name='index'),
-    # /login/1/
-    # ex: /login/5/signin/#url(r'^(?P<username_id>[0-9]+)/signin/$', views.signin, name='signin'),
-    # ex: /login/5/signup/
-
+    
     # ---------Login Page : Existing Users
     url(r'^$', views.login, name='login'),
 
@@ -26,8 +21,12 @@ urlpatterns = [
     url(r'^addslot/$', views.addslot, name="addslot"),
 
     #--------- Book Available Slot - Interns -------
-    url(r'^(?P<appointment_id>[0-9]+)/$', views.bookslot, name="bookslot")
+    url(r'^(?P<appointment_id>[0-9]+)/$', views.bookslot, name="bookslot"),
 
+    #--------- Delete Available Slot - Mannagers -------
+    url(r'^delete/(?P<appointment_id>[0-9]+)/$', views.deleteslot, name="deleteslot"),
 
-    
+    #--------- Email Interns - Mannagers -------
+    url(r'^email/(?P<appointment_id>[0-9]+)/$', views.emailintern, name="emailintern")
+
 ]

@@ -2,80 +2,299 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Login</title>
+    <title>Login - Cisco Lunch Connect</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.min.css' %}" type="text/css">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'login/signin.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'login/font-awesome/css/font-awesome.min.css' %" type="text/css">
 
-  </head>
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/animate.min.css' %}" type="text/css">
 
-  <body>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/creative-intern.css' %}" type="text/css">
 
-    <div class="container">
-    <!-- What you want to send-->
-     <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
-        <h2 class="form-signin-heading">Welcome {{user.firstname}} {{user.lastname}} </h2>
-        
-        <h3>Designation : {{user.designation}} </h3>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        <h3>Business Unit : {{user.businessunit}} </h3>
-        
-        <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
-        <a href="{% url 'login:login' %}" class="btn btn-info" role="button">Logout!</a>
-        </form>
-    </div> <!-- /container -->
+</head>
 
-    <!-- Available Manager free slots-->
-    <div class="container">
-      <h2> Mananger's Available Slots are: </h2>
-      <h3> manager_username | booked |start | end | Additional Notes </h3>
-      {% for av in app_man_available %}
-      <p> ---------------------------------------------------------------------------------------------------------------------</p>
-        <h3> {{ av.manager_username }} | {{ av.starttime }} | {{ av.endtime }} | {{ av.date }} | {{ av.additionalinfo }} | <a href="{% url 'login:bookslot' av.id %}" class="btn btn-info" data-toggle="modal" data-target="#bookslotmodal" role="button">Book!</a></h3>
-      {% endfor %}
-    </div>
+<body id="page-top">
 
-    <!-- Own booked slots-->
-    <div class="container">
-      <h2> Your booked Appointments are: </h2>
-      <h3> manager_username | intern_username | location | start | end | date | additionalinfo | booked </h3>
-      {% for bk in app_own_intern %}
-      <p> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-        <h3> {{ bk.manager_username }} | {{ bk.intern_username}} | {{ bk.location }} | {{ bk.starttime }} | {{ bk.endtime }} | {{ bk.date }} | {{ bk.additionalinfo }} | {{ bk.booked }} | </h3>
-      {% endfor %}
-    </div>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+                <img class="navbar-brand page-scroll" src="{% static 'login/img/cisco-logo.png' %}" width="70" height="100">
+                <a class="navbar-brand page-scroll" href="#page-top">Lunch Connect</a>
+                <a class="navbar-brand page-scroll" href="http://wwwin-tools.cisco.com/dir/details/{{user.username}}" target="_blank"> Hi, {{user.firstname}}</s>
+            </div>
 
-    <!-- Confirmation modal Popup-->
-    <div class="modal fade" id="bookslotmodal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Appointment Confirmation</h4>
-          </div>
-          <div class="modal-body">
-            <p>One fine body&hellip;</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Great!</button>
-            <button type="button" class="btn btn-primary">Send Email</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Appointment<span class="caret"></span></a>
+                        <ul id="drop_down" class="dropdown-menu">
+                            <li><a class="page-scroll" href="#availableslot">AVAILABLE SLOTS</a></li>
+                            <li><a class="page-scroll" href="#bookedslot">BOOKED SLOTS</a></li>
+                        </ul>
+                    </li> 
+                    <li>
+                        <a class="page-scroll" href="#about">About Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Update Profile</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{% url 'login:login' %}">Logout</a>
+                    </li>
 
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-  </body>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <!-- Display Profile Info here -->
+                <h2 class="section-heading text-center">Welcome {{user.firstname}} {{user.lastname}}</h2>
+                <h4 class"text-center"> <a href="http://wwwin-tools.cisco.com/dir/details/{{user.username}}" target="_blank" >Intern</a> ({{ user.businessunit }}), Cisco Systems </h4>
+                <hr class="primary">
+               <br>
+                <!-- Image carousel -->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                          </ol>
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner" role="listbox">
+                            <div class="item active text-center">
+                              <img src="{%static 'login/img/intern-1.jpg' %}" height="400" width="500" alt="Chania">
+                            </div>
+
+                            <div class="item text-center">
+                              <img src="{%static 'login/img/intern-2.jpg' %}" height="400" width="500" alt="Chania">
+                            </div>
+
+                            <div class="item">
+                              <img src="{%static 'login/img/intern-3.jpg' %}" height="400" width="500" alt="Flower">
+                            </div>
+
+                            <div class="item">
+                              <img src="{%static 'login/img/intern-4.jpg' %}" height="400" width="500" alt="Flower">
+                            </div>
+                           </div>
+
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                </div><!--end of carousel -->
+                <br>
+                <!-- About us glyphicon -->
+                <a href="#availableslot" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="availableslot">
+        <div class="container">
+            <div class="row no-gutter">
+                <h2 class="section-heading text-center">Available Slots to Book</h2>
+                <hr class="light">
+                {% for av in app_man_available %}
+                    <div class="well">
+                        <p style="color:black;"class="text-left"> Appointment by <b><a href="http://wwwin-tools.cisco.com/dir/details/{{av.manager_username}}" target="_blank">{{ av.manager_username}}</a> </b> on <b>{{ av.date}}</b> from <b>{{ av.starttime}}</b> to <b>{{ av.endtime}}</b> at <b>{{ av.location}}</b> (<i>{{ av.additionalinfo}}</i>)</p>
+                        <a href="{% url 'login:bookslot' av.id %}" class="btn1 btn-lg btn-primary">Book Slot</a>
+                                                          
+                    </div>
+                {% endfor %}
+                                   
+                </div>
+                
+            </div>
+            <br>
+            <center><a href="#bookedslot" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a></center>
+        </div>
+    </section>
+
+    <section class="bg-dark" id="bookedslot">
+        <div class="container1">
+            <div class="row">
+                <h2 class="section-heading text-center">Your Booked Slots</h2>
+                <hr class="primary">
+                {% for av in app_own_intern %}
+                    <div class="booked-panel col-sm-3 col-md-3 text-center">
+                        <img src="http://wwwin.cisco.com/dir/photo/zoom/{{ av.manager_username}}.jpg" height="200" width="150" target="blank" class="image-position2"/>
+                        <p class="text-center"> Appointment on <b>{{ av.date}} with <a href="http://wwwin-tools.cisco.com/dir/details/{{av.manager_username}}" target="_blank">{{ av.manager_username}}</a> </b></p>
+                        <p class="text-center"> From <b>{{ av.starttime}}</b> to <b>{{ av.endtime}}</b> </p>
+                        <p class="text-center"> At <b>{{ av.location}}</b> </p>
+                        <p class="text-center text-faded"> Notes-<i>{{ av.additionalinfo}}</i> </p>
+                        <button href="#" class="btn1 btn-md btn-primary">Email Manager</button>
+                    </div>
+                {% endfor %}
+                    
+                </div>
+         
+            </div>
+            <br>
+            <center><a href="#about" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a></center>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Who are we?</h2>
+                    <hr class="light">
+                    <div class="text text-2">
+                        <font color="#300000"><p><span>Lunch Connect helps breaking down boundaries between groups</span></p></font>
+                        <p><span>With employees on different projects and each subgroup with different backgrounds and training, organizational silos are a constant problem.&nbsp;</span></p>
+                        <p class="text-faded"><span>The experience of getting to know colleagues at various different stages in their careers is both interesting and enriching.</span><br></p>
+                        <p>Lunch Connect provides interns and recent hires with an opportunity to learn about other groups and teams by pairing them up with available managers during lunch breaks or coffee chats.
+                    <br></p>
+                    </div>
+                      <div class="element element-2"></div>
+                      <font color="#300000"><span>We bring you Lunch Connect to help you use every single minute of your lunch networking, gaining visibility and exploring the work diversity at Cisco.
+                      </span></p></font>
+                      <center><a href="#portfolio" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a></center>
+                      
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/nikikuma" target="blank" class="portfolio-box">
+                        <img src="{% static 'login/img/nikikuma.jpg' %}" class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Nikita Kumar
+                                </div>
+                                <div class="project-name">
+                                    MBA, CMU-Tepper School of Business(2016)
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/taparikh" target="blank" class="portfolio-box">
+                        <img src="{% static 'login/img/taparikh.jpg' %}"  class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Tanvi Parikh
+                                </div>
+                                <div class="project-name">
+                                    Master's (CS), CU-Boulder 2016
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/edshea2" target="blank" class="portfolio-box">
+                        <img style="background-color:red" src="{% static 'login/img/edshea.jpg' %}" class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Ed Shea
+                                </div>
+                                <div class="project-name">
+                                    BS (ECE), UNC Chapel Hill 2016
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    <p>720-545-7950</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:Tanvi.Parikh@colorado.edu">Tanvi.Parikh@colorado.edu</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{% static 'login/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'login/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'login/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'login/js/jquery.fittext.js' %}"></script>
+    <script src="{% static 'login/js/wow.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'login/js/creative.js' %}"></script>
+
+</body>
+
 </html>

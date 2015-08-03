@@ -2,51 +2,216 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Login</title>
+    <title>Login - Cisco Lunch Connect</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'login/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.min.css' %}" type="text/css">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'login/signin.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'login/font-awesome/css/font-awesome.min.css' %" type="text/css">
 
-  </head>
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/animate.min.css' %}" type="text/css">
 
-  <body>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/creative.css' %}" type="text/css">
 
-    <div class="container">
-    <!-- What you want to send-->
-     <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">Cisco Lunch Connect</h2>
-		<h4 style="color: #FF0000;"> Incorrect Username or Password. Try Again. </h4>
-        <label for="inputEmail" class="sr-only">Cisco Username</label>
-        <input type="text" name="inputUsername" class="form-control" placeholder="Cisco Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
-      
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Sign in</button>
-       
-        <br><br>
-        <button class="btn btn-lg btn-default btn-block" type="button">About US</button>
-      </form>
-         <p> Sign up if you don't have an account yet </p>
-        <form class="form-signin" action="{% url 'login:signup' %}" method="post">
-          {% csrf_token %}
-          <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" />
-      </form> 
-    </div> <!-- /container -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+</head>
 
+<body id="page-top">
 
-  </body>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+                <img class="navbar-brand page-scroll" src="{% static 'login/img/cisco-logo.png' %}" width="70" height="100">
+                 <a class="navbar-brand page-scroll" href="#page-top">Lunch Connect</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">The Team</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <!-- Login page info -->
+                <form class="form-signin" action="{% url 'login:submitform' %}" method="post">
+                        {% csrf_token %}
+                        <h2 class="form-signin-heading">Cisco Lunch Connect</h2>
+                        <hr class="primary">
+                        <h4 style="color: #FF0000;"> Incorrect Username or Password. Try Again. </h4>
+                        <input type="text" name="inputUsername" class="form-control" placeholder="Cisco Username" required autofocus>
+                        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" value="signin">Sign in</button>
+                </form>
+
+                <form class="form-signin" action="{% url 'login:signup' %}" method="post">
+                      {% csrf_token %}
+                      <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" />
+                </form> 
+
+                <!-- About us glyphicon -->
+                <a href="#about" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">About Us Page</h2>
+                    <hr class="light">
+                    <div class="text text-2">
+                        <font color="#300000"><p><span>Lunch Connect helps breaking down boundaries between groups</span></p></font>
+                        <p><span>With employees on different projects and each subgroup with different backgrounds and training, organizational silos are a constant problem.&nbsp;</span></p>
+                        <p class="text-faded"><span>The experience of getting to know colleagues at various different stages in their careers is both interesting and enriching.</span><br></p>
+                        <p>Lunch Connect provides interns and recent hires with an opportunity to learn about other groups and teams by pairing them up with available managers during lunch breaks or coffee chats.
+                    <br></p>
+                    </div>
+                      <div class="element element-2"></div>
+                      <font color="#300000"><span>We bring you Lunch Connect to help you use every single minute of your lunch networking, gaining visibility and exploring the work diversity at Cisco.
+                      </span></p></font>
+                      <a href="#portfolio" class="page-scroll"><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button></a>
+                      
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/nikikuma" target="blank" class="portfolio-box">
+                        <img src="{% static 'login/img/nikikuma.jpg' %}" class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Nikita Kumar
+                                </div>
+                                <div class="project-name">
+                                    MBA (Product Mgmt), Tepper Business School (2016)
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/taparikh" target="blank" class="portfolio-box">
+                        <img src="{% static 'login/img/taparikh.jpg' %}"  class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Tanvi Parikh
+                                </div>
+                                <div class="project-name">
+                                    Master's (CS), CU-Boulder 2016
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wwwin-tools.cisco.com/dir/details/edshea2" target="blank" class="portfolio-box">
+                        <img style="background-color:red" src="{% static 'login/img/edshea.jpg' %}" class="image-position" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Ed Shea
+                                </div>
+                                <div class="project-name">
+                                    BS (ECE), UNC Chapel Hill 2016
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    <p>720-545-7950</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:your-email@your-domain.com">Tanvi.Parikh@colorado.edu</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{% static 'login/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'login/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'login/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'login/js/jquery.fittext.js' %}"></script>
+    <script src="{% static 'login/js/wow.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'login/js/creative.js' %}"></script>
+
+</body>
+
 </html>

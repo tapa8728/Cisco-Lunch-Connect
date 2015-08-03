@@ -9,6 +9,7 @@ class User(models.Model):
     password = models.CharField(max_length=20)
     firstname = models.CharField(max_length=40)
     lastname = models.CharField(max_length=40)
+    email = models.EmailField(default="invalid")
     designation = models.CharField(max_length=40)
     businessunit = models.CharField(max_length=30)
 
@@ -20,8 +21,8 @@ class Appointment(models.Model):
  	location = models.CharField(max_length=200, blank=True)
  	additionalinfo = models.CharField(max_length=200, blank=True)
  	booked = models.BooleanField(default=False)
- 	starttime = models.TimeField(default="12:00")
- 	endtime = models.TimeField(default="12:00")
+ 	starttime = models.TimeField(default="12:30")
+ 	endtime = models.TimeField(default="1:30")
  	date=models.DateField(default="2009-10-03")
 
 
